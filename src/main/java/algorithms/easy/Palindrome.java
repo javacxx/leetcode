@@ -7,26 +7,20 @@ package algorithms.easy;
 public class Palindrome {
     /**
      * Time O(lg(x))
-     * Space O(lg(x))
+     * Space O(1)
+     *
      * @param x
      * @return
      */
     public boolean isPalindrome(int x) {
-        if (x < 0) return false;
-
-        String str = Integer.toString(x);
-        char[] chars = str.toCharArray();
-
-        for (int i=0; i<chars.length; i++) {
-            if(i >= chars.length-i-1){
-                return true;
-            }
-            char a = chars[i];
-            char b = chars[chars.length-1-i];
-            if (a != b) {
-                return false;
-            }
+        int n = 0;
+        if (x < 0 || (x % 10 == 0 && x != 0)) {
+            return false;
         }
-        return true;
+        while (x > n) {
+            n = n * 10 + x % 10;
+            x /= 10;
+        }
+        return n == x || x == n / 10;
     }
 }
