@@ -6,6 +6,14 @@ package algorithms.easy;
  */
 public class ReverseInterger {
 
+    /**
+     * 2=\log_10 100\  以10为底100的对数是2
+     * Time O(lg(x)),There are roughly log_{10}(x) digits in x.
+     * x 的位数决定循环次数，即时间复杂度
+     * Space O(1)
+     * @param x
+     * @return
+     */
     public static int reverse(int x) {
         int rv = 0;
         while (x !=0) {
