@@ -39,7 +39,12 @@ public class ArrayAddFunc {
         capacity = newCapacity;
     }
 
-
+    /**
+     *
+     * @param a
+     * @param b
+     * @return
+     */
     private int plusInt(int a, int b) {
         if (validatePlusOverflow(a, b)) {
             StringBuilder stringBuilder = new StringBuilder();
