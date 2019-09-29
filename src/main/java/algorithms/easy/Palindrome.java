@@ -9,18 +9,18 @@ public class Palindrome {
      * Time O(lg(x))
      * Space O(1)
      *
-     * @param x
+     * @param source
      * @return
      */
-    public boolean isPalindrome(int x) {
-        int n = 0;
-        if (x < 0 || (x % 10 == 0 && x != 0)) {
+    public boolean isPalindrome(int source) {
+        int tmpValue = 0;
+        if (source < 0 || (source % 10 == 0 && source != 0)) {
             return false;
         }
-        while (x > n) {
-            n = n * 10 + x % 10;
-            x /= 10;
+        while (source > tmpValue) {
+            tmpValue = tmpValue * 10 + source % 10;
+            source /= 10;
         }
-        return n == x || x == n / 10;
+        return tmpValue == source || source == tmpValue / 10;
     }
 }
