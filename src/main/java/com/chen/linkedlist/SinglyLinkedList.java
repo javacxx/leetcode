@@ -42,6 +42,9 @@ public class SinglyLinkedList<E>{
         return tmp.element;
     }
 
+
+
+
     private Node<E> createNode(E element, Node next) {
         return new Node<>(element, next);
     }

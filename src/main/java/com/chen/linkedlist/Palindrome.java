@@ -15,22 +15,26 @@ public class Palindrome {
         singlyLinkedList.add("B");
         singlyLinkedList.add("A1");
 
-        System.out.println(validatePalindrome(singlyLinkedList));
+        System.out.println(validatePalindromeWithStack(singlyLinkedList));
     }
 
-    public static boolean validatePalindrome(SinglyLinkedList<String> singlyLinkedList) {
+
+    public static boolean validatePalindromeReversed(SinglyLinkedList<String> singlyLinkedList) {
+        int i = 0;
+        int lastIndex = singlyLinkedList.getSize() - 1;
+        do{
+            if (!singlyLinkedList.get(i).equals(singlyLinkedList.get(lastIndex - i))) {
+                return false;
+            }
+            i++;
+        } while (2*i < lastIndex);
+        return true;
+    }
+
+    public static boolean validatePalindromeWithStack(SinglyLinkedList<String> singlyLinkedList) {
         int listSize = singlyLinkedList.getSize();
-
-        int secondHalfBeginIndex;
-        boolean oddFlag = true;
-        if (listSize % 2 == 0) {
-            oddFlag = false;
-            secondHalfBeginIndex = listSize / 2;
-        } else {
-            secondHalfBeginIndex = listSize / 2 + 1;
-        }
-
-
+        boolean oddFlag = isOdd(listSize);
+        int secondHalfBeginIndex = getSecondHalfBeginIndex(singlyLinkedList, oddFlag);
 
         int index = 0;
         Stack<String> stack = new Stack();
@@ -52,6 +56,19 @@ public class Palindrome {
             index++;
         } while (index < listSize);
         return true;
+    }
+
+    private static int getSecondHalfBeginIndex(SinglyLinkedList<String> singlyLinkedList, boolean oddFlag) {
+        int listSize = singlyLinkedList.getSize();
+        return oddFlag ?  listSize / 2 + 1 : listSize / 2;
+    }
+
+    private static boolean isOdd(int size) {
+        boolean oddFlag = true;
+        if (size % 2 == 0) {
+            oddFlag = false;
+        }
+        return oddFlag;
     }
 
 }
